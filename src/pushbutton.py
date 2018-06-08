@@ -1,3 +1,8 @@
+#--------------Caggegi's Version--------------
+#-----for my Elegoo touch screen 3.5 inch-----
+#-----------------22  25  23------------------
+#-----------------13  12  16------------------
+
 # Copyright (C) 2017 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,15 +95,15 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #Trigger Pin
-GPIO.setup(22, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(13, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 #Indicator Pins
-GPIO.setup(25, GPIO.OUT)
+GPIO.setup(20, GPIO.OUT)
 GPIO.setup(5, GPIO.OUT)
 GPIO.setup(6, GPIO.OUT)
 GPIO.output(5, GPIO.LOW)
 GPIO.output(6, GPIO.LOW)
-led=GPIO.PWM(25,1)
+led=GPIO.PWM(12,1)
 led.start(0)
 
 
@@ -775,7 +780,7 @@ def main(api_endpoint, credentials, project_id,
         wait_for_user_trigger = not once
         while True:
             if wait_for_user_trigger:
-                button_state=GPIO.input(22)
+                button_state=GPIO.input(13)
                 if button_state==True:
                     continue
                 else:
