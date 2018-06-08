@@ -1,7 +1,7 @@
 #
 #--------------Caggegi's Version--------------
 #-----for my Elegoo touch screen 3.5 inch-----
-#-----------Change button to GPIO20-----------
+#-----------Change button to GPIO16-----------
 
 #!/usr/bin/env python
 import time
@@ -13,10 +13,10 @@ from actions import stop
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(20, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(16, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 while GPIO.input(20):
     time.sleep(0.01)
-    if not GPIO.input(20):
+    if not GPIO.input(16):
        print('Stopped')
        stop() 
