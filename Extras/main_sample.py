@@ -1,3 +1,9 @@
+#--------------Caggegi's Version--------------
+#-----for my Elegoo touch screen 3.5 inch-----
+#---------------22  25  23  13  24------------
+#---------------13  12  16  26  21------------
+
+
 #!/usr/bin/env python
 
 # Copyright (C) 2017 Google Inc.
@@ -53,12 +59,12 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #Indicator Pins
-GPIO.setup(25, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
 GPIO.setup(5, GPIO.OUT)
 GPIO.setup(6, GPIO.OUT)
 GPIO.output(5, GPIO.LOW)
 GPIO.output(6, GPIO.LOW)
-led=GPIO.PWM(25,1)
+led=GPIO.PWM(12,1)
 led.start(0)
 
 
