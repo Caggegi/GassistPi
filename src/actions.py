@@ -1,3 +1,9 @@
+#--------------Caggegi's Version--------------
+#-----for my Elegoo touch screen 3.5 inch-----
+#----------22  25  23      24  27  27---------
+#----------13  12  16      21  19  13---------
+
+
 #!/usr/bin/env python
 
 #This is different from AIY Kit's actions
@@ -59,7 +65,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 #Number of entities in 'var' and 'PINS' should be the same
 var = ('kitchen lights', 'bathroom lights', 'bedroom lights')#Add whatever names you want. This is case is insensitive
-gpio = (12,13,24)#GPIOS for 'var'. Add other GPIOs that you want
+gpio = (12,26,21)#GPIOS for 'var'. Add other GPIOs that you want
 
 #Number of station names and station links should be the same
 stnname=('Radio 1', 'Radio 2', 'Radio 3', 'Radio 5')#Add more stations if you want
@@ -77,16 +83,16 @@ for pin in gpio:
     GPIO.output(pin, 0)
 
 #Servo pin declaration
-GPIO.setup(27, GPIO.OUT)
-pwm=GPIO.PWM(27, 50)
+GPIO.setup(19, GPIO.OUT)
+pwm=GPIO.PWM(19, 50)
 pwm.start(0)
 
 #Stopbutton
-GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(16, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 #Led Indicator
-GPIO.setup(25, GPIO.OUT)
-led=GPIO.PWM(25,1)
+GPIO.setup(12, GPIO.OUT)
+led=GPIO.PWM(12,1)
 led.start(0)
 
 playshell = None
@@ -240,12 +246,12 @@ def ESP(phrase):
 #Stepper Motor control
 def SetAngle(angle):
     duty = angle/18 + 2
-    GPIO.output(27, True)
+    GPIO.output(19, True)
     say("Moving motor by " + str(angle) + " degrees")
     pwm.ChangeDutyCycle(duty)
     time.sleep(1)
     pwm.ChangeDutyCycle(0)
-    GPIO.output(27, False)
+    GPIO.output(19, False)
 
 
 def stop():
@@ -294,7 +300,7 @@ def feed(phrase):
     title=feed['feed']['title']
     say(title)
     #To stop the feed, press and hold stop button
-    while GPIO.input(23):
+    while GPIO.input(16):
         for x in range(0,numfeeds):
             content=feed['entries'][x]['title']
             print(content)
